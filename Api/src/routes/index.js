@@ -19,6 +19,7 @@ const movementsDelete = require('../controllers/movementsControllers/movementsDe
 router.get('/movements',movementsGet);
 
 router.post('/movements',[
+    
     check('concept').isLength({ min: 1 }),
     body('concept', 'Concept is required').not().isEmpty(),
     body('date', 'date must be in format DD/MM/YYYY')
