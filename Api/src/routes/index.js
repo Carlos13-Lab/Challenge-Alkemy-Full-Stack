@@ -45,13 +45,4 @@ router.delete('/movements', movementsDelete);
 //============================
 
 
-// router.get('/test', async (req, res, next) => {
-//     try {
-//         res.status(200).send('deploy succesfull!')
-//     }
-//     catch (error) {
-//         next(error)
-//     }
-// })
-
 module.exports = router;
