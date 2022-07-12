@@ -3,6 +3,7 @@ const router = Router();
 const { check, body } = require('express-validator');
 const {
     validateField,
+    validateJWT,
 } = require('../middlewares');
 
 
@@ -10,6 +11,7 @@ const movementsGet = require('../controllers/movementsControllers/movementsGet')
 const movementsPost = require('../controllers/movementsControllers/movementsPost');
 const movementsPut = require('../controllers/movementsControllers/movementsPut');
 const movementsDelete = require('../controllers/movementsControllers/movementsDelete');
+const {register , login} = require('../controllers/AuthUserControllers/auth.controller');
 
 
 //============================
@@ -18,8 +20,8 @@ const movementsDelete = require('../controllers/movementsControllers/movementsDe
 
 router.get('/movements',movementsGet);
 
-router.post('/movements',[
-    
+router.post('/movements',
+[
     check('concept').isLength({ min: 1 }),
     body('concept', 'Concept is required').not().isEmpty(),
     body('date', 'date must be in format DD/MM/YYYY')
@@ -41,8 +43,13 @@ router.delete('/movements', movementsDelete);
 
 
 //============================
-//         User
+//       Auth
 //============================
+router.post('/auth/register', register);
+
+
+router.post('/auth/login', login);
+
 
 
 module.exports = router;

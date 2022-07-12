@@ -4,24 +4,16 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     // defino el modelo
     sequelize.define('user', {
-        fullName: {
-            type: DataTypes.STRING,
-            required: true,
+        username: {
+        type: DataTypes.STRING,
         },
         email: {
-            type: DataTypes.STRING,
-            required: true,
-            unique: true,
+        type: DataTypes.STRING,
         },
         password: {
-            type: DataTypes.STRING,
-            required: true,
+        type: DataTypes.STRING,
         },
-        gender: {
-            type: DataTypes.STRING,
-            default: 'male',
-            enum: ['male', 'female'],
-        },
+
     }, {
         timestamps: false,
     });

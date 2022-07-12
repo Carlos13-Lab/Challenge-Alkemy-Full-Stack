@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const response = require('../helpers/response.js');
-const User = require('../models/user.model');
+const User = require('../models/user.js');
 
 //Validate JWT
 const validateJWT = async (req, res, next) => {
@@ -26,12 +26,6 @@ const validateJWT = async (req, res, next) => {
         if (!user) {
             return response.error(req, res, 'User not found', 404);
         }
-
-        //Verufy if user status is true
-        if (!user.status) {
-            return response.error(req, res, 'Access denied. User deleted', 401);
-        }
-
         req.user = user;
 
         next();
