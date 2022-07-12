@@ -1,55 +1,14 @@
 const { Router } = require('express');
 const router = Router();
-const { check, body } = require('express-validator');
-const {
-    validateField,
-    validateJWT,
-} = require('../middlewares');
 
+const authRegister = require('../routes/register.routes');
+const movements = require('../routes/movements.routes');
+const authLogin  = require('../routes/login.routes');
 
-const movementsGet = require('../controllers/movementsControllers/movementsGet');
-const movementsPost = require('../controllers/movementsControllers/movementsPost');
-const movementsPut = require('../controllers/movementsControllers/movementsPut');
-const movementsDelete = require('../controllers/movementsControllers/movementsDelete');
-const {register , login} = require('../controllers/AuthUserControllers/auth.controller');
+router.use('/movements', movements);
 
+router.use('/auth/register', authRegister);
 
-//============================
-//       Movements
-//============================
-
-router.get('/movements',movementsGet);
-
-router.post('/movements',
-[
-    check('concept').isLength({ min: 1 }),
-    body('concept', 'Concept is required').not().isEmpty(),
-    body('date', 'date must be in format DD/MM/YYYY')
-        .if(body('date').exists())
-        .isDate({ format: 'DD/MM/YYYY' }),
-    validateField
-] ,movementsPost);
-
-router.put('/movements',  [
-    check('concept').isLength({ min: 1 }),
-    body('concept', 'Concept is required').not().isEmpty(),
-    body('date', 'date must be in format DD/MM/YYYY')
-        .if(body('date').exists())
-        .isDate({ format: 'DD/MM/YYYY' }),
-    validateField
-],movementsPut);
-
-router.delete('/movements', movementsDelete);
-
-
-//============================
-//       Auth
-//============================
-router.post('/auth/register', register);
-
-
-router.post('/auth/login', login);
-
-
+router.use('/auth/login', authLogin);
 
 module.exports = router;
