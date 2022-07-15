@@ -18,10 +18,10 @@ const validateJWT = async (req, res) => {
     const movement = await Movement.findById(id);
     console.log(movement);
     //Check if user exist
-    // if (!movement) {
-    //     return response.error(req, res, 'User not found', 404);
-    // }
-    // req.movement = movement;
+    if (!movement) {
+        return response.error(req, res, 'User not found', 404);
+    }
+    req.movement = movement;
 
     next();    
 };
