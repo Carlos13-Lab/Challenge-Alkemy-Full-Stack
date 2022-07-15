@@ -19,7 +19,8 @@ module.exports = (sequelize) => {
     type: {
       type: DataTypes.ENUM('income', 'expense'),
       allowNull: false,
-    }
+    },
+
   }, {
     timestamps: false,
   });
