@@ -69,6 +69,7 @@ const login = async (req, res) => {
     }
 
     const user = await User.findOne({ where: { email: email } });
+    console.log(user)
 
     if (!user) {
       return res.status(400).json({ msg: 'incorrects credentials' })
@@ -81,6 +82,7 @@ const login = async (req, res) => {
     }
 
     const token = jwt.sign({ email: email }, process.env.PASS_JWT, { expiresIn: '48h' });
+    console.log(token)
 
     res.status(200).json({ token })
 

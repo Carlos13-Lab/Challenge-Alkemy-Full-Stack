@@ -3,6 +3,7 @@ const router = Router();
 const { check, body } = require('express-validator');
 const {
     validateField,
+    validateJWT
 } = require('../middlewares');
 
 
@@ -20,6 +21,7 @@ router.get('/', movementsGet);
 
 router.post('/',
     [
+        validateJWT,
         check('concept').isLength({ min: 1 }),
         body('concept', 'Concept is required').not().isEmpty(),
         body('date', 'date must be in format DD/MM/YYYY')
@@ -29,6 +31,7 @@ router.post('/',
     ], movementsPost);
 
 router.put('/', [
+    validateJWT,
     check('concept').isLength({ min: 1 }),
     body('concept', 'Concept is required').not().isEmpty(),
     body('date', 'date must be in format DD/MM/YYYY')
@@ -37,7 +40,14 @@ router.put('/', [
     validateField
 ], movementsPut);
 
-router.delete('/', movementsDelete);
+router.delete('/', 
+[   
+    validateJWT,
+    body('id', 'id is required').not().isEmpty(),
+    body('date', 'is required').not().isEmpty(),
+    validateField
+],
+movementsDelete);
 
 
 
