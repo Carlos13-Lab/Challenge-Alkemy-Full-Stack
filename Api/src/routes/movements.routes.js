@@ -40,7 +40,7 @@ router.put('/put', [
 
 router.delete('/delete', 
 [   
-    validateJWT,
+
     body('id', 'id is required').not().isEmpty(),
     body('date', 'is required').not().isEmpty(),
     validateField
