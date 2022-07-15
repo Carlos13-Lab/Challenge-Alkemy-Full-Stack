@@ -17,6 +17,9 @@ API REST for the backend
 
 -   Carlos Diaz
 
-## Deployment:
-
-
+## Deployment
+    
+- [Heroku app](https://api-challenge-alkemy.herokuapp.com/api/)
+- [Heroku app](https://api-challenge-alkemy.herokuapp.com/api/movements)
+- [Heroku app](https://api-challenge-alkemy.herokuapp.com/api/auth/login)
+- [Heroku app](https://api-challenge-alkemy.herokuapp.com/api/auth/register)

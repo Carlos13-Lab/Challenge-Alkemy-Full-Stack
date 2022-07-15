@@ -16,6 +16,7 @@ const validateJWT = async (req, res) => {
             message: "Token is valid"
         })
     });
+    
 };
 
 module.exports = { validateJWT };
