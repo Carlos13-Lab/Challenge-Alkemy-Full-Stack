@@ -21,6 +21,7 @@ router.get('/get', movementsGet);
 
 router.post('/post',
     [
+        validateJWT,
         check('concept').isLength({ min: 1 }),
         body('concept', 'Concept is required').not().isEmpty(),
         body('date', 'date must be in format DD/MM/YYYY')
@@ -30,6 +31,7 @@ router.post('/post',
     ], movementsPost);
 
 router.put('/put', [
+    validateJWT,
     check('concept').isLength({ min: 1 }),
     body('concept', 'Concept is required').not().isEmpty(),
     body('date', 'date must be in format DD/MM/YYYY')
@@ -40,7 +42,7 @@ router.put('/put', [
 
 router.delete('/delete', 
 [   
-
+    validateJWT,
     body('id', 'id is required').not().isEmpty(),
     body('date', 'is required').not().isEmpty(),
     validateField
