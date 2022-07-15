@@ -17,9 +17,9 @@ const movementsDelete = require('../controllers/movementsControllers/movementsDe
 //       Movements
 //============================
 
-router.get('/', movementsGet);
+router.get('/get', movementsGet);
 
-router.post('/',
+router.post('/post',
     [
         validateJWT,
         check('concept').isLength({ min: 1 }),
@@ -30,7 +30,7 @@ router.post('/',
         validateField
     ], movementsPost);
 
-router.put('/', [
+router.put('/put', [
     validateJWT,
     check('concept').isLength({ min: 1 }),
     body('concept', 'Concept is required').not().isEmpty(),
@@ -40,7 +40,7 @@ router.put('/', [
     validateField
 ], movementsPut);
 
-router.delete('/', 
+router.delete('/delete', 
 [   
     validateJWT,
     body('id', 'id is required').not().isEmpty(),
