@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const config = require("../config/auth.config.js");
-const Movement = require('../models/movement');
+const Movement = require('../models/Movements');
 
 //Validate JWT
 const validateJWT = async (req, res) => {
