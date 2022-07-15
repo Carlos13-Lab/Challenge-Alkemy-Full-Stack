@@ -9,7 +9,7 @@ API REST for the backend
 -   Node.js
 -   Express.js
 -   Validation with jwt
--   Sql(postgresql)
+-   PostgreSql
 -   ORM(Sequelize)
 
 
