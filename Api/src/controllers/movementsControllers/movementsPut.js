@@ -14,7 +14,6 @@ const movementsPut = async (req, res, next) => {
             { returning: true, where: { id: id } })
         res.status(200).send(`El movimiento "${concept}" fue modificado`)
     } catch (error) {
-        next(error)
         res.status(400).send(`El movimiento no pudo modificarse ${error.message}`)
     }
 }
