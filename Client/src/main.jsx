@@ -2,13 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './pages/App'
 import './styles/index.css'
+import store from './Redux/store';
 
-import { ChakraProvider } from "@chakra-ui/react";
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <ChakraProvider>
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-  </ChakraProvider>
+root.render(
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>
 )
