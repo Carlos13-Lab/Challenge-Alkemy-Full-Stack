@@ -13,8 +13,9 @@ const movementsPut = async (req, res, next) => {
         },
             { returning: true, where: { id: id } })
         res.status(200).send(`El movimiento "${concept}" fue modificado`)
+        res.status(200).send(updatedMovement)
     } catch (error) {
-        res.status(400).send(`El movimiento no pudo modificarse ${error.message}`)
+        res.status(500).send(`El movimiento no pudo modificarse ${error.message}`)
     }
 }
 module.exports = movementsPut;
