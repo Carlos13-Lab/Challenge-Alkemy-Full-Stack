@@ -11,6 +11,8 @@ const validateJWT = async (req, res, next) => {
         });
     }
 
+            
+
     jwt.verify(token, config.secret, () => {
         res.status(200,).send({
             message: "Token is valid"
