@@ -31,6 +31,7 @@ router.post('/',
     ], movementsPost);
 
 router.put('/', [
+    validateJWT,
     body('id','id is required').not().isEmpty() ,
     check('concept').isLength({ min: 1 }),
     body('concept', 'Concept is required').not().isEmpty(),

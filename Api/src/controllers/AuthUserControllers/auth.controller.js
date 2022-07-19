@@ -3,6 +3,10 @@ const { Op } = require( 'sequelize')
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 // import { sendEmailWelcome } from '../helpers/sendEmail.js'
+
+//============================
+//       Register
+//============================
 const register = async (req, res) => {
 
   const { password, username, email } = req.body
@@ -58,6 +62,10 @@ const register = async (req, res) => {
   res.status(201).json({ msg: 'User created successfully' })
 }
 
+//============================
+//      login
+//============================
+
 const login = async (req, res) => {
 
   const { password, email } = req.body
@@ -90,5 +98,12 @@ const login = async (req, res) => {
     return res.json({ msg: error })
   }
 }
+
+// logout
+const logout = async (req, res) => {
+  res.status(200).json({ msg: 'logout' })
+}
+
+
 
 module.exports = {  register, login }
