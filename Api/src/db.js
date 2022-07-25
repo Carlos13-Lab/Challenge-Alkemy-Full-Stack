@@ -59,9 +59,9 @@ const { Movement, User } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Movement.belongsToMany(User, { through: 'Movement_User' })
-User.belongsToMany(Movement, { through: 'Movement_User' })
 
+User.hasMany(Movement, { foreignKey: 'user_id' })
+Movement.belongsTo(User, { foreignKey: 'user_id' })
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

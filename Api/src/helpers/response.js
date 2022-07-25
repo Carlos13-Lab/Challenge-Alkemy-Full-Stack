@@ -12,7 +12,6 @@ const error = function (req, res, message, status = 500) {
         data: {},
     });
 };
-
 module.exports = {
     success,
     error,

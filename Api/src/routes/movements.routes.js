@@ -30,7 +30,8 @@ router.post('/',
         validateField
     ], movementsPost);
 
-router.put('/', [
+router.put('/:id', [
+    validateJWT,
     body('id','id is required').not().isEmpty() ,
     check('concept').isLength({ min: 1 }),
     body('concept', 'Concept is required').not().isEmpty(),
@@ -40,11 +41,9 @@ router.put('/', [
     validateField
 ], movementsPut);
 
-router.delete('/', 
+router.delete('/:id', 
 [   
     validateJWT,
-    body('id', 'id is required').not().isEmpty(),
-    body('date', 'is required').not().isEmpty(),
     validateField
 ],
 movementsDelete);

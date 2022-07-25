@@ -1,19 +1,31 @@
 const { Movement } = require('../../db.js');
 
 const MovementPost = async (req, res, next) => {
-    const { concept, date, amount, type } = req.body
+    const userId = req.userId;
+    const { concept, date, amount, type, user_id} = req.body
 
     try {
         const newMovement = await Movement.create({
             concept,
             date,
             amount,
-            type
+            type,
+            user_id: userId
         })
-        res.json(newMovement)
+        res.json({ 
+            message: 'Movement created',
+             newMovement: {
+                id: newMovement.id,
+                concept: newMovement.concept,
+                date: newMovement.date,
+                amount: newMovement.amount,
+                type: newMovement.type,
+                user_id: newMovement.user_id
+             }
+        })
     }
     catch (error) {
-        next(error)
+        response.error(res, error , 'Error creating movement');
     }
 }
 

@@ -1,22 +1,33 @@
 const { Movement } = require('../../db.js');
 
 const movementsPut = async (req, res, next) => {
-    const { id, concept, date, amount, type } = req.body;
+  try {
+      const { id } = req.params;
+      const { concept, date, amount, type } = req.body;
 
-    try {
-        const updatedMovement = await Movement.update({
-            concept,
-            date,
-            amount,
-            type
+      const movement = await Movement.findByPk(id);
 
-        },
-            { returning: true, where: { id: id } })
-        res.status(200).send(`El movimiento "${concept}" fue modificado`)
+
+      await movement.update({
+          concept,
+          amount,
+          date,
+          type
+      });
+
+      res.json({
+          msg: 'novement updated',
+          movement: {
+              id: movement.id,
+              concept: movement.concept,
+              date: movement.date,
+              amount: movement.amount,
+              type: movement.type
+          }
+      });
+
     } catch (error) {
-        next(error)
-        res.status(500).send(`El movimiento no pudo modificarse ${error.message}`)
-    }
-    next();
+        next(error);
+        }
 }
-module.exports = movementsPut;
+module.exports = movementsPut;   

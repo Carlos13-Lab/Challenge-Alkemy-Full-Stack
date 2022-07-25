@@ -45,10 +45,11 @@ const register = async (req, res) => {
     const salt = bcryptjs.genSaltSync(10);
     const hash = bcryptjs.hashSync(password, salt);
 
+
     const user = {
       password: hash,
       username,
-      email
+      email, 
     }
 
     await User.create(user)
@@ -59,7 +60,14 @@ const register = async (req, res) => {
     return res.json({ msg: error })
   }
 
-  res.status(201).json({ msg: 'User created successfully' })
+  res.status(201).json({ 
+
+    msg: 'User created successfully',
+    user: {
+      username,
+      email,
+    }
+  })
 }
 
 //============================
@@ -89,10 +97,17 @@ const login = async (req, res) => {
       return res.status(400).json({ msg: 'incorrect password' })
     }
 
-    const token = jwt.sign({ email: email }, process.env.PASS_JWT, { expiresIn: '48h' });
-    console.log(token)
+    const token = jwt.sign({ id: user.id}, process.env.JWT_SECRET, { expiresIn: '48h' });
+ 
 
-    res.status(200).json({ token })
+    res.status(200).json({ 
+      token,
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email
+      }
+    })
 
   } catch (error) {
     return res.json({ msg: error })

@@ -1,8 +1,7 @@
 const { Movement } = require('../../db.js');
 
-
-const movementsDelete = async (req, res, next) => {
-    const { id, date } = req.body;
+const movementsDelete = async (req, res) => {
+    const { id } = req.body;
 
 
     try {
@@ -15,9 +14,18 @@ const movementsDelete = async (req, res, next) => {
                 id: targetMovement.id
             }
         })
-        res.status(200).send(`El movimiento ${targetMovement.concept}, con fecha ${date}, ha sido eliminado.`)
+        res.json({
+            msg: 'delete movement',
+            movement: {
+                id: targetMovement.id,
+                concept: targetMovement.concept,
+                date: targetMovement.date,
+                amount: targetMovement.amount,
+                type: targetMovement.type
+            }
+        }).status(200)
     } catch (error) {
-        next(error)
+        next(error);
     }
 }
 module.exports = movementsDelete;
