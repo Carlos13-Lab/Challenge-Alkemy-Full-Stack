@@ -7,10 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { register } from "../redux/actions";
 import { Link } from "react-router-dom";
 
+import Img from "../assets/bandera-mini.png";
+import Arrow from "@components/Left-Arrow";
+import "../styles/welcome.css";
+
+
 // Render Login page-
 const RegisterPage = () => {
-  const [forms, setForms] = useState(false); // SHow form or button to select user.
-  const [customForm, setCustomForm] = useState(false); // Use to select what form render.
 
   const dispatch = useDispatch();
 
@@ -57,9 +60,7 @@ const RegisterPage = () => {
         <form onSubmit={formik.handleSubmit}>
           <div>
             <input
-              style={{
-                borderLeft: formik.errors.email ? "3px solid tomato" : "1.5px solid #b9b9b9",
-              }}
+              className='input-login'
               type='email'
               placeholder='Correo electronico'
               id='email'
@@ -70,10 +71,7 @@ const RegisterPage = () => {
           </div>
           <div>
             <input
-              style={{
-                marginTop: "5px",
-                borderLeft: formik.errors.username ? "3px solid tomato" : "1.5px solid #b9b9b9",
-              }}
+              className='input-login'
               type='username'
               placeholder='username'
               id='username'
@@ -85,10 +83,7 @@ const RegisterPage = () => {
           </div>
           <div>
             <input
-              style={{
-                marginTop: "5px",
-                borderLeft: formik.errors.password ? "3px solid tomato" : "1.5px solid #b9b9b9",
-              }}
+              className='input-login'
               type='password'
               placeholder='password'
               id='password'
@@ -98,26 +93,36 @@ const RegisterPage = () => {
             />
             {formik.errors.password ? <div> {formik.errors.password} </div> : null}
           </div>
-          <input type='submit' value='Registrar' />
+          <input type='submit' value='Registrar' className='input-login-botton' />
         </form>
       </div>
     );
   };
 
   return (
-    <main>
-        <section>
+    <main className='welcome'>
+      <article className='welcome-section'>
+        <div>
+          <img src={Img} alt='' className='welcome-section-img' />
+        </div>
+      </article>
+      <div className='welcome-container'>
+        <div className='back-welcome'>
+          <Link to='/'>
+            {" "}
+            <Arrow />{" "}
+          </Link>
+        </div>
+        <h1 className='welcome-logo'>
           <Logo />
-          <button><Link to='/' > Back Welcome </Link></button>
-          <h3>Registrarse¿?</h3>
-        </section>
-        <FormRegister />
-        <section>  
-          <p>¿Ya tienes una cuenta?</p>
-          <button className='welcome-button'>
-            <Link to='/login'>login</Link>
-          </button>
-        </section>
+        </h1>
+        <p className='welcome-text1'>
+          Welcome <span>MONEY</span>
+        </p>
+        <div className='welcome-login'>
+          <FormRegister />
+        </div>
+      </div>
     </main>
   );
 };

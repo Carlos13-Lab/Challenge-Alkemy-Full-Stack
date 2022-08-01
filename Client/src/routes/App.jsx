@@ -5,7 +5,7 @@ import WelcomePage from '../pages/Welcome.Pages';
 import Layout from '../containers/LayoutContainer';
 import Home from '../pages/Home.Pages';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 function App() {
     

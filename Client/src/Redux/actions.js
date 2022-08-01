@@ -35,17 +35,3 @@ export function logout() {
     }
 }
 
-
-// export function UserGet({id}) {
-//     let data = { email, username, password , movements };
-//     return async function (dispatch) {
-
-//         var json = await axios.post(`http://localhost:5000/api/users/${id}`, data);
-//         return dispatch({
-//             type: 'UserGet',
-//             payload: json.data,
-//         });
-
-//     };
-// }
-
