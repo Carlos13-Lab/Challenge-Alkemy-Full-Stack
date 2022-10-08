@@ -1,0 +1,41 @@
+.header {
+    position: relative;
+    padding-top: .5rem;
+    height: 3rem;
+}
+
+.header-menu {
+        width: 2rem;
+        border: none;
+        background-color: rgb(236, 236, 236);
+        margin-left: .5rem;
+}
+
+.header-menu img {
+    display: block;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+@media screen and (min-width: 992px) {
+    .header {
+        position: static;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: .5rem;
+        height: 3rem;
+        margin-top: 1rem;
+    }
+    .header-menu {
+        display: none
+    }
+    
+a {
+    text-decoration: none;
+}
+}

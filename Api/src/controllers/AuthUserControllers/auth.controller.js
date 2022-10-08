@@ -1,4 +1,4 @@
-const { User } = require('../../db.js');
+const { User, Movement} = require('../../db.js');
 const { Op } = require( 'sequelize')
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken')
@@ -66,6 +66,8 @@ const register = async (req, res) => {
     user: {
       username,
       email,
+      movements: []
+
     }
   })
 }
@@ -85,7 +87,6 @@ const login = async (req, res) => {
     }
 
     const user = await User.findOne({ where: { email: email } });
-    console.log(user)
 
     if (!user) {
       return res.status(400).json({ msg: 'incorrects credentials' })
@@ -97,26 +98,28 @@ const login = async (req, res) => {
       return res.status(400).json({ msg: 'incorrect password' })
     }
 
+    const movements = await Movement.findAll({
+      where: {
+        user_id: user.id
+      }
+    })
+
     const token = jwt.sign({ id: user.id}, process.env.JWT_SECRET, { expiresIn: '48h' });
  
-
+    console.log(user.movements)
     res.status(200).json({ 
       token,
       user: {
         id: user.id,
         username: user.username,
-        email: user.email
+        email: user.email,
+        movement: movements
       }
     })
 
   } catch (error) {
     return res.json({ msg: error })
   }
-}
-
-// logout
-const logout = async (req, res) => {
-  res.status(200).json({ msg: 'logout' })
 }
 
 

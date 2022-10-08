@@ -25,7 +25,7 @@ const MovementPost = async (req, res, next) => {
         })
     }
     catch (error) {
-        response.error(res, error , 'Error creating movement');
+        next(error);
     }
 }
 

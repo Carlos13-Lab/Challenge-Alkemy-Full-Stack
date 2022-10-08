@@ -17,7 +17,12 @@ const movementsDelete = require('../controllers/movementsControllers/movementsDe
 //       Movements
 //============================
 
-router.get('/', movementsGet);
+router.get('/', 
+[
+    validateJWT,
+    validateField
+] ,
+movementsGet);
 
 router.post('/',
     [

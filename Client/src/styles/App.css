@@ -1,3 +1,58 @@
-.App {
-  text-align: center;
+
+
+
+* {
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;;
+    padding: 0;
+    margin: 0;
+    color: black; 
+   margin-inline: auto;
 }
+    img {
+      width: 100%;
+       }
+    
+    a {
+      text-decoration: none;
+      color: black;
+      display: block;
+    }
+    
+    input, textarea {
+      -webkit-appearance: none;
+      appearance: none;
+      outline: none;
+      border: none;
+    overflow: auto;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none; 
+    }
+
+    li {
+      list-style: none;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
+    
+    input[type=number] { -moz-appearance:textfield; }
+
+  
+
+  .app {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  };
+    

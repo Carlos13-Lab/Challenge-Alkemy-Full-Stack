@@ -1,5 +1,4 @@
 const { User , Movement} = require('../../db.js'); 
-const response = require('../../helpers/response');
 
 const UserGet = async (req, res, next) => {
     try {
@@ -8,12 +7,13 @@ const UserGet = async (req, res, next) => {
                 include: [
                     {
                         model: Movement,
-                        as: 'movements'
+                        as: 'movements', 
+                        
                     }
                 ]
             }
             )
-       
+
         res.json(info);
     }
     catch (error) {

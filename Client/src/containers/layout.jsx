@@ -1,7 +1,9 @@
-import { Outlet } from 'react-router-dom'
-import Header from '@containers/HeaderContainer'
+import { Outlet, Navigate } from 'react-router-dom'
+import Header from '@containers/Header'
+
 
 const Layout = () => {
+
     return (
         <>
             <Header />
